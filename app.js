@@ -15,12 +15,12 @@ app.use('/api/v1/tasks', tasks)
 app.use(notFound)
 app.use(errorHandlerMiddleware)
 
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
 const startServer = async () => {
     try {
         await connectDatabase(process.env.Mongo_URI)
-        app.listen(PORT, console.log(`Server is listening on ${PORT}...`))
+        app.listen(port, console.log(`Server is listening on ${port}...`))
     } catch (err) {
         console.log(err)
     }
